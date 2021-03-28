@@ -36,7 +36,15 @@ export const Home = () => {
 			<hr />
 			<div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
 				{store.planets.map((item, index) => {
-					return <Planet name={item.name} population={item.population} key={index} terrain={item.terrain} />;
+					return (
+						<Planet
+							name={item.name}
+							id={index}
+							population={item.population}
+							key={index}
+							terrain={item.terrain}
+						/>
+					);
 				})}
 			</div>
 		</div>

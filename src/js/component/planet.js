@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export const Planet = props => {
 	const { store, actions } = useContext(Context);
 	return (
-		<div className="card-block mx-5" style={{ height: "500px" }}>
+		<div className="card-block mx-5" style={{ height: "425px" }}>
 			<img src="https://picsum.photos/400/200" />
 			<div className="card-body">
 				<h5 className="card-title">{props.name}</h5>
@@ -16,7 +16,7 @@ export const Planet = props => {
 				<p className="card-text">Terrain:&nbsp; {props.terrain}</p>
 				<div className="container">
 					<div className="row">
-						<Link to="/demo">
+						<Link to={"/singlePlanet/" + props.id}>
 							<div className="col-sm">
 								<a href="#" className="btn btn-primary">
 									Learn More
@@ -24,7 +24,7 @@ export const Planet = props => {
 							</div>
 						</Link>
 						<div className="col-sm">
-							<Favorite name={props.name} />
+							<Favorite name={props.name} uid={props.id} key={props.key} />
 						</div>
 					</div>
 				</div>
@@ -36,5 +36,7 @@ export const Planet = props => {
 Planet.propTypes = {
 	name: PropTypes.string,
 	population: PropTypes.string,
-	terrain: PropTypes.string
+	terrain: PropTypes.string,
+	id: PropTypes.string,
+	key: PropTypes.number
 };

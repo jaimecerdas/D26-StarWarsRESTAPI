@@ -10,7 +10,7 @@ export const Person = props => {
 	let index = 0;
 
 	return (
-		<div className="card-block mx-5" style={{ height: "500px" }}>
+		<div className="card-block mx-5" style={{ height: "425px" }}>
 			<img src="https://picsum.photos/400/200" />
 			<div className="card-body">
 				<h5 className="card-title">{props.name}</h5>
@@ -37,7 +37,7 @@ export const Person = props => {
 							</div>
 						</Link>
 						<div className="col-sm">
-							<Favorite name={props.name} uid={props.key} key={props.key} />
+							<Favorite name={props.name} uid={props.id} key={props.key} />
 						</div>
 					</div>
 				</div>

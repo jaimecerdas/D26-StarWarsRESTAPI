@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Single = props => {
+export const SinglePlanet = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	let index = params.theid;
@@ -13,7 +13,7 @@ export const Single = props => {
 		<div className="jumbotron jumbotron-fluid">
 			<h1 className="display-4">
 				{" "}
-				<strong>{store.people[index].name}</strong>{" "}
+				<strong>{store.planets[index].name}</strong>{" "}
 			</h1>
 
 			<div className="container">
@@ -37,40 +37,44 @@ export const Single = props => {
 				<div className="row">
 					<div className="col-sm">
 						<p>
-							<strong>Birth Year: </strong>
+							<strong>Name: </strong>
 						</p>
 					</div>
 					<div className="col-sm">
 						<p>
-							<strong>Gender: </strong>
+							<strong>Climate: </strong>
 						</p>
 					</div>
 					<div className="col-sm">
 						<p>
-							<strong>Height: </strong>
+							<strong>Population: </strong>
 						</p>
 					</div>
 					<div className="col-sm">
 						<p>
-							<strong>Skin Color: </strong>
+							<strong>Orbital Period: </strong>
 						</p>
 					</div>
 					<div className="col-sm">
 						<p>
-							<strong>Eye Color: </strong>
+							<strong>Rotation Period: </strong>
+						</p>
+					</div>
+					<div className="col-sm">
+						<p>
+							<strong>Diameter: </strong>
 						</p>
 					</div>
 				</div>
 			</div>
 			<div className="container">
 				<div className="row">
-					<div className="col-sm">
-						<p>{store.people[index].birth_year}</p>
-					</div>
-					<div className="col-sm">{store.people[index].gender}</div>
-					<div className="col-sm">{store.people[index].height}</div>
-					<div className="col-sm">{store.people[index].skin_color}</div>
-					<div className="col-sm">{store.people[index].eye_color}</div>
+					<div className="col-sm">{store.planets[index].name}</div>
+					<div className="col-sm">{store.planets[index].climate}</div>
+					<div className="col-sm">{store.planets[index].population}</div>
+					<div className="col-sm">{store.planets[index].orbital_period}</div>
+					<div className="col-sm">{store.planets[index].rotation_period}</div>
+					<div className="col-sm">{store.planets[index].diameter}</div>
 				</div>
 			</div>
 			<Link to="/">
@@ -82,7 +86,7 @@ export const Single = props => {
 	);
 };
 
-Single.propTypes = {
+SinglePlanet.propTypes = {
 	match: PropTypes.object,
-	id: PropTypes.string
+	id: PropTypes.number
 };

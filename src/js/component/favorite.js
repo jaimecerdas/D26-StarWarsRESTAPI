@@ -6,8 +6,8 @@ export const Favorite = props => {
 	const { store, actions } = useContext(Context);
 	const isFavorite = "fas fa-check";
 	const isNotFavorite = "far fa-heart";
-	const isFavoriteColor = "btn btn-success";
-	const isNotFavoriteColor = "btn btn-outline-primary";
+	const isFavoriteColor = "btn btn-outline-dark";
+	const isNotFavoriteColor = "btn btn-outline-warning";
 	const [favorite, setFavorite] = useState(isNotFavorite);
 	const [favoriteColor, setFavoriteColor] = useState(isNotFavoriteColor);
 
@@ -16,19 +16,19 @@ export const Favorite = props => {
 			setFavorite(isFavorite);
 			setFavoriteColor(isFavoriteColor);
 			actions.addFavorite(props.name);
-			console.log(store.favorites);
+			//console.log(store.favorites);
 		} else {
 			setFavorite(isNotFavorite);
 			setFavoriteColor(isNotFavoriteColor);
 			actions.removeFavorite(props.name);
-			console.log(store.favorites);
+			//console.log(store.favorites);
 		}
 	}
 
 	return (
 		<div className="col-sm">
-			<button type="button" className={favorite} onClick={handleClick}>
-				<i className={favoriteColor} />
+			<button type="button" className={favoriteColor} onClick={handleClick}>
+				<i className={favorite} />
 			</button>
 		</div>
 	);
