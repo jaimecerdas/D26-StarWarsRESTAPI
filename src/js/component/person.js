@@ -10,8 +10,12 @@ export const Person = props => {
 	let index = 0;
 
 	return (
-		<div className="card-block mx-5" style={{ height: "425px" }}>
-			<img src="https://picsum.photos/400/200" />
+		<div className="card-block mx-5  bg-dark text-white" style={{ height: "425px" }}>
+			<img
+				src="https://cdn02.plentymarkets.com/g0dvqlm68way/item/images/607/full/607---1.jpg"
+				width="400"
+				height="200"
+			/>
 			<div className="card-body">
 				<h5 className="card-title">{props.name}</h5>
 				<p className="card-text">
@@ -31,7 +35,7 @@ export const Person = props => {
 					<div className="row">
 						<Link to={"/single/" + props.id}>
 							<div className="col-sm">
-								<a href="#" className="btn btn-primary">
+								<a href="#" className="btn btn-warning">
 									Learn More
 								</a>
 							</div>

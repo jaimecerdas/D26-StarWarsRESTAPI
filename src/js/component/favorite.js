@@ -6,10 +6,19 @@ export const Favorite = props => {
 	const { store, actions } = useContext(Context);
 	const isFavorite = "fas fa-check";
 	const isNotFavorite = "far fa-heart";
-	const isFavoriteColor = "btn btn-outline-dark";
+	const isFavoriteColor = "btn btn-outline-warning";
 	const isNotFavoriteColor = "btn btn-outline-warning";
 	const [favorite, setFavorite] = useState(isNotFavorite);
 	const [favoriteColor, setFavoriteColor] = useState(isNotFavoriteColor);
+
+	function updateFavorite(name) {
+		const favoriteList = store.favorites;
+		let n = favoriteList.includes(name);
+		if (n === false) {
+			setFavorite(isNotFavorite);
+			setFavoriteColor(isNotFavoriteColor);
+		}
+	}
 
 	function handleClick() {
 		if (favorite == isNotFavorite) {

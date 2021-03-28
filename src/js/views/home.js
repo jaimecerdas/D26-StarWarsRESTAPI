@@ -15,7 +15,7 @@ export const Home = () => {
 	}, []);
 
 	return (
-		<div className="container">
+		<div className="container text-warning">
 			<h1>Caracters</h1>
 			<hr />
 			<div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">

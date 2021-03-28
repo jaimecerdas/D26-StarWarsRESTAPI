@@ -31,10 +31,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				*/
 			},
 
-			loadFavorites: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+			loadFavorites: newFavorite => {
+				Favorite.updateFavorite(newFavorite);
 			},
 			addFavorite: newFavorite => {
 				const store = getStore();
@@ -57,9 +55,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 				}
 				let result = arrayRemove(newArray, newFavorite);
-
+				//loadFavorites(newFavorite);
 				setStore({ favorites: result });
 			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
