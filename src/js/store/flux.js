@@ -74,41 +74,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			loadPeople: () => {
-				fetch("https://www.swapi.tech/api/people")
+				fetch("https://3000-azure-hummingbird-8q4vaq07.ws-us03.gitpod.io/people")
 					.then(res => res.json())
 					.then(async data => {
-						let arrayResults = data.results;
-						//console.log(data.results);
-						let peopleArray = [];
-
-						for (let i = 0; i < arrayResults.length; i++) {
-							const res = await fetch(arrayResults[i].url);
-							const json = await res.json();
-							const data = await json.result.properties;
-							//console.log(data);
-							peopleArray.push(data);
-						}
-						console.log(peopleArray);
-						setStore({ people: peopleArray });
+						let arrayResults = data;
+						console.log(arrayResults);
+						setStore({ people: arrayResults });
 					});
 			},
 			loadPlanets: () => {
-				fetch("https://www.swapi.tech/api/planets")
+				fetch("https://3000-azure-hummingbird-8q4vaq07.ws-us03.gitpod.io/planets")
 					.then(res => res.json())
 					.then(async data => {
-						let arrayResults = data.results;
-						//console.log(data.results);
-						let planetsArray = [];
-
-						for (let i = 0; i < arrayResults.length; i++) {
-							const res = await fetch(arrayResults[i].url);
-							const json = await res.json();
-							const data = await json.result.properties;
-							//console.log(data);
-							planetsArray.push(data);
-						}
-						console.log(planetsArray);
-						setStore({ planets: planetsArray });
+						let arrayResults = data;
+						console.log(arrayResults);
+						setStore({ planets: arrayResults });
 					});
 			}
 			/*loadPerson: async url => {
