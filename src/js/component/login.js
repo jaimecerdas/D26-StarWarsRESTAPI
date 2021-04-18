@@ -72,7 +72,7 @@ export const Login = () => {
 					Submit
 				</button>
 			</form>
-			{auth ? <Redirect to="/" /> : null}
+			{auth ? <Redirect to="/landing" /> : null}
 		</div>
 	);
 };

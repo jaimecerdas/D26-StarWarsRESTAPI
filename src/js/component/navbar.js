@@ -22,17 +22,6 @@ export const Navbar = () => {
 					/>
 				</span>
 			</Link>
-			<Link to="/login">
-				<button type="button" className="btn btn-secondary">
-					Login
-				</button>
-			</Link>
-			<Link to="/register">
-				<button type="button" className="btn btn-secondary">
-					Register
-				</button>
-			</Link>
-
 			<div className="dropdown">
 				<button
 					className="btn btn-secondary dropdown-toggle"

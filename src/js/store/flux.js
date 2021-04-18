@@ -30,10 +30,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
+			getFavorites: () => {
+				/*let current_token = sessionStorage.getItem.getItem("my_token");
+				fetch("https://3000-azure-hummingbird-8q4vaq07.ws-us03.gitpod.io/getfavorites")
+					.then(res => res.json())
+					.then(async data => {
+						let arrayResults = data;
+						console.log(arrayResults);
+						setStore({ favorites: arrayResults });
+					});*/
+			},
 
 			loadFavorites: newFavorite => {
 				Favorite.updateFavorite(newFavorite);
 			},
+
 			addFavorite: newFavorite => {
 				const store = getStore();
 				let newArray = store.favorites;
@@ -73,6 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
+
 			loadPeople: () => {
 				fetch("https://3000-azure-hummingbird-8q4vaq07.ws-us03.gitpod.io/people")
 					.then(res => res.json())
@@ -82,6 +94,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ people: arrayResults });
 					});
 			},
+
 			loadPlanets: () => {
 				fetch("https://3000-azure-hummingbird-8q4vaq07.ws-us03.gitpod.io/planets")
 					.then(res => res.json())
@@ -90,38 +103,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(arrayResults);
 						setStore({ planets: arrayResults });
 					});
-			}
-			/*loadPerson: async url => {
-				const config = {
-					method: "GET",
-					headers: {
-						"Content-type": "application/json"
-					}
-				};
-				const response = await fetch(`${url}`, config);
-				.then(res => res.json())
-                .then(data => data.results)
-                .then(data => setStore({ peopleDetail: data.result }))
-                .then(console.log(peopleDetail.results))
-                .catch(err => console.error(err));
-				const json = await response.json();
-				//console.log("--json--", json);
-				setStore({ peopleDetail: json.result.properties });
 			},
-			// Fetch Card Detail
-			fetchCardDetail: async url => {
-				console.log("---Flux---", url);
-				const config = {
-					method: "GET",
-					headers: {
-						"Content-type": "application/json"
-					}
-				};
-				const response = await fetch(`${url}`, config);
-				const json = await response.json();
-				console.log("--json--", json);
-				setStore({ cardDetailCharacter: json.result.properties });
-			}*/
+
+			postFavorites: () => {
+				fetch("https://3000-azure-hummingbird-8q4vaq07.ws-us03.gitpod.io/planets")
+					.then(res => res.json())
+					.then(async data => {
+						let arrayResults = data;
+						console.log(arrayResults);
+						setStore({ planets: arrayResults });
+					});
+			}
 		}
 	};
 };
