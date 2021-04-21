@@ -24,14 +24,30 @@ export const Favorite = props => {
 		if (favorite == isNotFavorite) {
 			setFavorite(isFavorite);
 			setFavoriteColor(isFavoriteColor);
-			actions.addFavorite(props.name);
+			//actions.addFavorite(props.name);
+			let favorito_name = props.name;
+			console.log(favorito_name);
+			actions.addFavoritefetch(favorito_name);
 			//console.log(store.favorites);
+			refreshFavorites();
 		} else {
 			setFavorite(isNotFavorite);
 			setFavoriteColor(isNotFavoriteColor);
-			actions.removeFavorite(props.name);
+			//actions.removeFavorite(props.name);
+			let favorito_name = props.name;
+			actions.removeFavoritefetch(favorito_name);
 			//console.log(store.favorites);
+			refreshFavorites();
 		}
+	}
+
+	function wait(ms) {
+		return new Promise(r => setTimeout(r, ms));
+	}
+	async function refreshFavorites() {
+		await wait(500);
+		actions.getFavorites();
+		return console.log("Favorites loaded successfully");
 	}
 
 	return (
@@ -45,5 +61,5 @@ export const Favorite = props => {
 
 Favorite.propTypes = {
 	name: PropTypes.string,
-	uid: PropTypes.string
+	uid: PropTypes.number
 };

@@ -41,7 +41,7 @@ export const Person = props => {
 							</div>
 						</Link>
 						<div className="col-sm">
-							<Favorite name={props.name} uid={props.id} key={props.key} />
+							<Favorite name={props.name} uid={props.id} key={props.id} />
 						</div>
 					</div>
 				</div>
@@ -57,5 +57,5 @@ Person.propTypes = {
 	gender: PropTypes.string,
 	eyeColor: PropTypes.string,
 	hairColor: PropTypes.string,
-	id: PropTypes.string
+	id: PropTypes.number
 };

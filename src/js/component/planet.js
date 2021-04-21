@@ -28,7 +28,7 @@ export const Planet = props => {
 							</div>
 						</Link>
 						<div className="col-sm">
-							<Favorite name={props.name} uid={props.id} key={props.key} />
+							<Favorite name={props.name} uid={props.id} key={props.id} />
 						</div>
 					</div>
 				</div>
@@ -41,6 +41,6 @@ Planet.propTypes = {
 	name: PropTypes.string,
 	population: PropTypes.string,
 	terrain: PropTypes.string,
-	id: PropTypes.string,
+	id: PropTypes.number,
 	key: PropTypes.number
 };

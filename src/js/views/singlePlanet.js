@@ -84,7 +84,7 @@ export const SinglePlanet = props => {
 					</div>
 				</div>
 				<hr />
-				<Link to="/">
+				<Link to="/landing">
 					<span className="btn btn-warning btn-lg" href="#" role="button">
 						Back home
 					</span>

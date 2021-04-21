@@ -5,7 +5,11 @@ import { Favorite } from "../component/favorite";
 
 export const Navbar = () => {
 	function handleClick(item) {
-		actions.removeFavorite(item);
+		let favorito_name = item.favorito_name;
+		console.log(favorito_name);
+		//actions.removeFavorite(item);
+		actions.removeFavoritefetch(favorito_name);
+		actions.getFavorites();
 	}
 
 	const { store, actions } = useContext(Context);
@@ -36,7 +40,8 @@ export const Navbar = () => {
 					{store.favorites.map((item, index) => {
 						return (
 							<a className="dropdown-item" href="#" key={index}>
-								{item} <i className="fas fa-trash-alt" key={index} onClick={() => handleClick(item)} />
+								{item.favorito_name}{" "}
+								<i className="fas fa-trash-alt" key={index} onClick={() => handleClick(item)} />
 							</a>
 						);
 					})}

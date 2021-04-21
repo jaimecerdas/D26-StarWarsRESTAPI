@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [],
 			cardDetailCharacter: [],
 			favorites: [],
+			my_token: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -30,15 +31,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
+
+			getToken: () => {
+				let my_tokenUnique = sessionStorage.getItem("my_token");
+				//console.log();
+				setStore({ my_token: my_tokenUnique });
+				const store = getStore();
+				let test = store.my_token;
+				//console.log();
+			},
 			getFavorites: () => {
-				/*let current_token = sessionStorage.getItem.getItem("my_token");
-				fetch("https://3000-azure-hummingbird-8q4vaq07.ws-us03.gitpod.io/getfavorites")
+				const store = getStore();
+				let my_token = store.my_token;
+				fetch("https://3000-azure-hummingbird-8q4vaq07.ws-us03.gitpod.io/getfavorites", {
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + my_token
+					}
+				})
 					.then(res => res.json())
 					.then(async data => {
 						let arrayResults = data;
+						//let favorites = [];
+						//arrayResults.forEach(element => {
+						//	favorites.push(arrayResults[item].favorito_name);
+						//});
 						console.log(arrayResults);
 						setStore({ favorites: arrayResults });
-					});*/
+					});
 			},
 
 			loadFavorites: newFavorite => {
@@ -53,10 +73,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					newArray.push(newFavorite);
 					return newArray;
 				};
-
 				setStore({ favorites: newArray });
 			},
-
+			addFavoritefetch: newFavorite => {
+				const store = getStore();
+				let my_token = store.my_token;
+				const body = {
+					favorito_name: newFavorite,
+					my_token: my_token
+				};
+				fetch("https://3000-azure-hummingbird-8q4vaq07.ws-us03.gitpod.io/addfavorites", {
+					method: "POST",
+					body: JSON.stringify(body),
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + my_token
+					}
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+					});
+			},
 			removeFavorite: newFavorite => {
 				const store = getStore();
 				let newArray = store.favorites;
@@ -66,10 +104,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 				}
 				let result = arrayRemove(newArray, newFavorite);
-				//loadFavorites(newFavorite);
+
+				let my_token = store.my_token;
+				const body = {
+					favorito_name: newFavorite,
+					my_token: my_token
+				};
 				setStore({ favorites: result });
 			},
-
+			removeFavoritefetch: newFavorite => {
+				const store = getStore();
+				let my_token = store.my_token;
+				const body = {
+					favorito_name: newFavorite,
+					my_token: my_token
+				};
+				fetch("https://3000-azure-hummingbird-8q4vaq07.ws-us03.gitpod.io/delfavorites", {
+					method: "DELETE",
+					body: JSON.stringify(body),
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + my_token
+					}
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+					});
+			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

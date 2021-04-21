@@ -11,6 +11,7 @@ export const Landing = () => {
 	useEffect(() => {
 		actions.loadPeople();
 		actions.loadPlanets();
+		actions.getToken();
 		actions.getFavorites();
 		//console.log(store.people);
 	}, []);
@@ -23,7 +24,7 @@ export const Landing = () => {
 				{store.people.map((item, index) => {
 					return (
 						<Person
-							key={item.index}
+							key={index}
 							id={index}
 							name={item.name}
 							gender={item.gender}
